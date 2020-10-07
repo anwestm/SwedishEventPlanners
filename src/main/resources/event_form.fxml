@@ -141,7 +141,7 @@
                 <CheckBox fx:id="partiesBox" layoutX="24.0" layoutY="87.0" mnemonicParsing="false" text="Parties" />
                 <CheckBox fx:id="foodBox" layoutX="241.0" layoutY="49.0" mnemonicParsing="false" text="Breakfast, lunch, dinner" />
                 <CheckBox fx:id="drinksBox" layoutX="241.0" layoutY="87.0" mnemonicParsing="false" text="Soft/hot drinks" />
-                <CheckBox fx:id="photosBox" layoutX="24.0" layoutY="126.0" mnemonicParsing="false" text="Photos/filmning" />
+                <CheckBox fx:id="photosBox" layoutX="24.0" layoutY="126.0" mnemonicParsing="false" text="Photos/filming" />
                 <CheckBox fx:id="decorBox" layoutX="24.0" layoutY="49.0" mnemonicParsing="false" text="Decorations" />
                 <Label layoutX="24.0" layoutY="14.0" text="Preferences">
                     <font>

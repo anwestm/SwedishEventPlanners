@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <fx:root maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" type="javafx.scene.control.ListCell" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <graphic>
-        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
             <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label fx:id="nameLabel" text="Name" />
-                <Label fx:id="dateLabel" text="Date" GridPane.columnIndex="2" />
-                <Label fx:id="idLabel" text="Id" GridPane.columnIndex="3" />
-                <Label fx:id="creatorLabel" text="CreatedBy" GridPane.columnIndex="1" />
+                <Label fx:id="nameLabel" text="Name" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="20.0" />
+               </padding></Label>
+                <Label fx:id="dateLabel" text="Creation date" GridPane.columnIndex="2" GridPane.halignment="LEFT">
+               <padding>
+                  <Insets left="20.0" />
+               </padding></Label>
+                <Label fx:id="idLabel" text="ID" GridPane.columnIndex="3" GridPane.halignment="LEFT">
+               <padding>
+                  <Insets left="20.0" />
+               </padding></Label>
+                <Label fx:id="creatorLabel" text="Created by" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="20.0" />
+               </padding></Label>
             </children>
         </GridPane>
     </graphic>
