@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
-    <children>
-        <Label fx:id="label" text="Label" />
-    </children>
-</StackPane>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RecordTabController">
+    <tabs>
+        <Tab text="Records">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="790.0">
+                    <children>
+                        <ListView id="recordList" fx:id="recordList" layoutX="41.0" layoutY="45.0" prefHeight="610.0" prefWidth="926.0" />
+                        <TextField layoutX="992.0" layoutY="80.0" promptText="Search..." />
+                        <Button layoutX="1089.0" layoutY="105.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
+                        <Button layoutX="1023.0" layoutY="524.0" mnemonicParsing="false" onAction="#createRecordButton" text="CreateRecord" />
+                        <Button layoutX="1024.0" layoutY="570.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="OpenRecord" />
+                        <ChoiceBox layoutX="53.0" layoutY="672.0" prefWidth="150.0" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Work Orders">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
