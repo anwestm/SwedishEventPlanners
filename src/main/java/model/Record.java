@@ -9,6 +9,10 @@ public abstract class Record implements Comparable<Record> {
     public String creator;
     public int id;
 
+    public Record() {
+
+    }
+
     public Record(String name, Date creationDate, int id, String creator) {
         this.name = name;
         this.creationDate = creationDate;

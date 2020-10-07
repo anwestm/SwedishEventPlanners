@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RecordTabController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecordTabController">
     <tabs>
         <Tab text="Records">
             <content>
@@ -13,7 +13,7 @@
                         <TextField layoutX="992.0" layoutY="80.0" promptText="Search..." />
                         <Button layoutX="1089.0" layoutY="105.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
                         <Button layoutX="1023.0" layoutY="524.0" mnemonicParsing="false" onAction="#createRecordButton" text="CreateRecord" />
-                        <Button layoutX="1024.0" layoutY="570.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="OpenRecord" />
+                        <Button layoutX="1024.0" layoutY="570.0" mnemonicParsing="false" onAction="#openRecordButton" prefHeight="25.0" prefWidth="87.0" text="OpenRecord" />
                         <ChoiceBox layoutX="53.0" layoutY="672.0" prefWidth="150.0" />
                     </children>
                 </AnchorPane>

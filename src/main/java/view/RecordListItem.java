@@ -48,7 +48,7 @@ public class RecordListItem extends ListCell<Record> {
             nameLabel.setText(item.name);
             dateLabel.setText(item.creationDate.toString());
             idLabel.setText(Integer.toString(item.id));
-            creatorLabel.setText("Doktor Alban");
+            creatorLabel.setText(item.creator);
 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         }

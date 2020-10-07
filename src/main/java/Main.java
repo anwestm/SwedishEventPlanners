@@ -12,6 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        setUserAgentStylesheet(STYLESHEET_MODENA);
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
@@ -20,6 +21,11 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+
+        // Bring window to front
+        stage.setAlwaysOnTop(true);
+        stage.setAlwaysOnTop(false);
+
     }
 
     public static void main(String[] args) {
