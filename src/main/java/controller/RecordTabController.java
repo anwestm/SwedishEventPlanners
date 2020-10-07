@@ -73,6 +73,7 @@ public class RecordTabController {
     public void createRecordButton(ActionEvent actionEvent) {
         openRecordForm(actionEvent);
     }
+
     public void openRecordButton(ActionEvent actionEvent) {
         EventFormController controller = openRecordForm(actionEvent);
         controller.setRecord(recordList.getSelectionModel().getSelectedItems().get(0));
