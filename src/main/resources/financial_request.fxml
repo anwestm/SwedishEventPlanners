@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="404.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FinancialRequest">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="96.0" layoutY="33.0" prefHeight="17.0" prefWidth="198.0" text="Financial Request" textFill="#f21717">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="85.0" prefHeight="17.0" prefWidth="153.0" text="Requesting department" />
+      <RadioButton layoutX="23.0" layoutY="120.0" mnemonicParsing="false" text="Administration" />
+   </children>
+</AnchorPane>
