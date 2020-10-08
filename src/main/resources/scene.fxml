@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RecordTabController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecordTabController">
     <tabs>
         <Tab text="Records">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="790.0">
                     <children>
-                        <ListView id="recordList" fx:id="recordList" layoutX="41.0" layoutY="45.0" prefHeight="610.0" prefWidth="926.0" />
-                        <TextField layoutX="992.0" layoutY="80.0" promptText="Search..." />
-                        <Button layoutX="1089.0" layoutY="105.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
-                        <Button layoutX="1023.0" layoutY="524.0" mnemonicParsing="false" onAction="#createRecordButton" text="CreateRecord" />
-                        <Button layoutX="1024.0" layoutY="570.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="OpenRecord" />
-                        <ChoiceBox layoutX="53.0" layoutY="672.0" prefWidth="150.0" />
+                        <ListView id="recordList" fx:id="recordList" layoutX="29.0" layoutY="43.0" prefHeight="689.0" prefWidth="931.0" />
+                        <TextField layoutX="987.0" layoutY="43.0" promptText="Search..." />
+                        <Button layoutX="1133.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
+                        <Button layoutX="1090.0" layoutY="587.0" mnemonicParsing="false" onAction="#createRecordButton" prefHeight="25.0" prefWidth="93.0" text="CreateRecord" />
+                        <Button layoutX="1000.0" layoutY="587.0" mnemonicParsing="false" onAction="#openRecordButton" prefHeight="25.0" prefWidth="87.0" text="OpenRecord" />
+                        <ChoiceBox layoutX="987.0" layoutY="114.0" prefHeight="25.0" prefWidth="199.0" />
+                        <GridPane alignment="CENTER" layoutX="29.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label fx:id="nameLabel" text="Name" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding></Label>
+                                <Label fx:id="dateLabel" text="Creation date" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                                <Label fx:id="idLabel" text="ID" GridPane.columnIndex="3" GridPane.halignment="LEFT" />
+                                <Label fx:id="creatorLabel" text="Created by" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding></Label>
+                            </children>
+                        </GridPane>
+                  <Label layoutX="987.0" layoutY="97.0" text="Record type" />
                     </children>
                 </AnchorPane>
             </content>
