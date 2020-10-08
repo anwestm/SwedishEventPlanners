@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecordTabController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecordTabController">
     <tabs>
         <Tab text="Records">
             <content>
@@ -40,6 +40,7 @@
                             </children>
                         </GridPane>
                   <Label layoutX="987.0" layoutY="97.0" text="Record type" />
+                  <Button layoutX="1000.0" layoutY="635.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" onAction="#financialRequestClicked" text="Financial Request" />
                     </children>
                 </AnchorPane>
             </content>

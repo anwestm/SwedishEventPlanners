@@ -45,6 +45,26 @@ public class RecordTabController {
 
     }
 
+    public EventFormController financialRequestClicked(ActionEvent actionEvent){
+        Parent root;
+        FXMLLoader loader = null;
+        System.out.print("ugh");
+        try{
+            loader = new FXMLLoader(getClass().getResource("../financial_request.fxml"));
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Financial Request Form");
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.setAlwaysOnTop(true);
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return loader.getController();
+    }
+
     public EventFormController openRecordForm(ActionEvent event) {
         Parent root;
         FXMLLoader loader = null;
