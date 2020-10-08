@@ -45,15 +45,15 @@ public class RecordTabController {
 
     }
 
-    public EventFormController financialRequestClicked(ActionEvent actionEvent){
+    private EventFormController createFormWindow(String path, String title){
+
         Parent root;
         FXMLLoader loader = null;
-        System.out.print("ugh");
         try{
-            loader = new FXMLLoader(getClass().getResource("../financial_request.fxml"));
+            loader = new FXMLLoader(getClass().getResource(path));
             root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Financial Request Form");
+            stage.setTitle(title);
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.setAlwaysOnTop(true);
@@ -65,29 +65,16 @@ public class RecordTabController {
         return loader.getController();
     }
 
+    public EventFormController financialRequestClicked(ActionEvent actionEvent){
+        return createFormWindow("../financial_request.fxml", "Financial Request Form");
+    }
+
+    public EventFormController clientRequestDetailsClicked(ActionEvent actionEvent){
+        return createFormWindow("../client_request_details.fxml", "Client Request Details Form");
+    }
+
     public EventFormController openRecordForm(ActionEvent event) {
-        Parent root;
-        FXMLLoader loader = null;
-        try {
-            loader = new FXMLLoader(getClass().getResource("../event_form.fxml"));
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Event Request Form");
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.setAlwaysOnTop(true);
-            stage.show();
-
-
-
-            // Hide this current window (if this is what you want)
-            //((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return loader.getController();
+        return createFormWindow("../event_form.fxml", "Event Request Form");
     }
 
     public void createRecordButton(ActionEvent actionEvent) {
