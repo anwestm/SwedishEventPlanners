@@ -37,8 +37,10 @@
                 </Label>
             </GridPane>
             <Label layoutX="987.0" layoutY="97.0" text="Record type" />
-            <Button layoutX="1000.0" layoutY="635.0" mnemonicParsing="false" onAction="#financialRequestClicked" prefHeight="25.0" prefWidth="181.0" text="Financial Request" />
-         <Button layoutX="1003.0" layoutY="691.0" mnemonicParsing="false" onAction="#clientRequestDetailsClicked" prefHeight="25.0" prefWidth="180.0" text="Client Request Details" />
+            <Button layoutX="1001.0" layoutY="623.0" mnemonicParsing="false" onAction="#financialRequestClicked" prefHeight="25.0" prefWidth="181.0" text="Financial Request" />
+         <Button layoutX="1000.0" layoutY="655.0" mnemonicParsing="false" onAction="#clientRequestDetailsClicked" prefHeight="25.0" prefWidth="180.0" text="Client Request Details" />
+         <Button layoutX="998.0" layoutY="688.0" mnemonicParsing="false" onAction="#recruitmentRequestClicked" prefHeight="25.0" prefWidth="182.0" text="Recruitment Request" />
+         <Button layoutX="1002.0" layoutY="720.0" mnemonicParsing="false" onAction="#createClientRecordClicked" prefHeight="25.0" prefWidth="179.0" text="CreateClientRecord" />
         </AnchorPane>
     </Tab>
     <Tab text="Work Orders">

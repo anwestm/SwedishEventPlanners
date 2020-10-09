@@ -73,6 +73,14 @@ public class RecordTabController {
         return createFormWindow("../client_request_details.fxml", "Client Request Details Form");
     }
 
+    public EventFormController recruitmentRequestClicked(ActionEvent actionEvent){
+        return createFormWindow("../recruitment_request.fxml", "Recruitment Request Form");
+    }
+
+    public EventFormController createClientRecordClicked(ActionEvent actionEvent){
+        return createFormWindow("../client_record.fxml", "Client Form");
+    }
+
     public EventFormController openRecordForm(ActionEvent event) {
         return createFormWindow("../event_form.fxml", "Event Request Form");
     }
