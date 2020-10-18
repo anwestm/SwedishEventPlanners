@@ -5,8 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import model.EventRecord;
-import model.Record;
+import model.record.EventRecord;
+import model.record.FinancialRequestRecord;
+import model.record.Record;
 
 import java.io.IOException;
 
@@ -23,6 +24,10 @@ public class RecordListItem extends ListCell<Record> {
 
     @FXML
     private Label creatorLabel;
+
+    @FXML
+    private Label typeLabel;
+
 
     public RecordListItem() {
         try {
@@ -49,6 +54,21 @@ public class RecordListItem extends ListCell<Record> {
             dateLabel.setText(item.creationDate.toString());
             idLabel.setText(Integer.toString(item.id));
             creatorLabel.setText(item.creator);
+
+            if (item instanceof EventRecord)
+            {
+                typeLabel.setText("EventRecord");
+            }
+            else if (item instanceof FinancialRequestRecord)
+            {
+                typeLabel.setText("FinancialRequestRecord");
+            }
+            else
+            {
+                typeLabel.setText("Record");
+            }
+
+
 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         }

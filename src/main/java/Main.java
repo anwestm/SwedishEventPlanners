@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,6 +27,8 @@ public class Main extends Application {
         // Bring window to front
         stage.setAlwaysOnTop(true);
         stage.setAlwaysOnTop(false);
+
+
 
     }
 

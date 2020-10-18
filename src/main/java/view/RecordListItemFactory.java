@@ -3,7 +3,7 @@ package view;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
-import model.Record;
+import model.record.Record;
 
 
 public class RecordListItemFactory implements Callback<ListView<Record>, ListCell<Record>> {

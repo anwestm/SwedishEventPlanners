@@ -1,4 +1,6 @@
-package model;
+package model.record;
+
+import model.record.util.EventPreferences;
 
 import java.util.Date;
 

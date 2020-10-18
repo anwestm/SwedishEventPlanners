@@ -1,4 +1,4 @@
-package model;
+package model.record.util;
 
 public class EventPreferences {
 

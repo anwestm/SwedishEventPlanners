@@ -12,7 +12,7 @@ import model.record.Record;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class EventFormController {
+public class RecruitmentRequestController {
 
     public TextField clientNameField;
     public TextField recordNumberField;
