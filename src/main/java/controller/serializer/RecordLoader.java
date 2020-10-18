@@ -21,6 +21,10 @@ public class RecordLoader {
         mapper = new ObjectMapper();
     }
 
+    private String getRecordFileName(Record r, Class<?> recordType) {
+        return recordType.getName() + "-" + r.id + ".json";
+    }
+
     public void saveRecord(Record record, Class<?> recordType) {
         String filename = path + "/" + recordType.getName() + "-" +record.id + ".json";
         File file  = new File(filename);

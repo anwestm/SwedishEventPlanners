@@ -13,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         setUserAgentStylesheet(STYLESHEET_MODENA);
 
         Scene scene = new Scene(root);
