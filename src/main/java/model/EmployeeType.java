@@ -8,7 +8,8 @@ public enum EmployeeType {
     FINANCIAL_MANAGER("Financial Manager"),
     ADMINISTRATION_MANAGER("Administration Manager"),
     PRODUCTION_MANAGER("Production Manager"),
-    SERVICE_MANAGER("Service Manager");
+    SERVICE_MANAGER("Service Manager"),
+    DEBUG("DEBUG");
 
     private String name;
 

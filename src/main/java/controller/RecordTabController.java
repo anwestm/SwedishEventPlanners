@@ -8,9 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.ClientUser;
 import model.EmployeeType;
 import model.record.EventRecord;
 import model.record.FinancialRequestRecord;
+import model.record.JobRecord;
 import model.record.Record;
 import model.workorder.WorkOrder;
 import model.workorder.WorkOrderRepository;
@@ -32,6 +34,11 @@ public class RecordTabController {
 
     public TabPane tabPane;
     public TextField searchField;
+
+    public Button eventRecordButton;
+    public Button finReqButton;
+    public Button clientReqButton;
+    public Button jobReqButton;
 
     @FXML
     private void initialize() {
@@ -56,7 +63,26 @@ public class RecordTabController {
         workOrderList.setCellFactory(new WorkOrderItemFactory());
         WorkOrderRepository.getInstance().addListViewSubscription(workOrderList);
 
-        //recordList.getItems().add(new EventRecord("Kungens födelsedag", new Date(0), 123, "Andreas"));
+        EmployeeType currentUser = ClientUser.getInstance().getEmployeeType();
+
+
+        /*eventRecordButton.setDisable(true);
+        finReqButton.setDisable(true);
+        clientReqButton.setDisable(true);
+        jobReqButton.setDisable(true);*/
+
+        if(currentUser == EmployeeType.CUSTOMER_SERVICE)
+            eventRecordButton.setDisable(false);
+
+        if (currentUser == EmployeeType.SENIOR_CUSTOMER_SERVICE)
+            clientReqButton.setDisable(false);
+
+        if (currentUser == EmployeeType.SENIOR_CUSTOMER_SERVICE || currentUser == EmployeeType.PRODUCTION_MANAGER)
+            finReqButton.setDisable(false);
+
+        if (currentUser == EmployeeType.HR_EMPLOYEE || currentUser == EmployeeType.PRODUCTION_MANAGER)
+            jobReqButton.setDisable(false);
+
     }
 
 
@@ -139,6 +165,12 @@ public class RecordTabController {
             FinancialRequestController controller = (FinancialRequestController) openRecordForm("../financial_request.fxml", "Financial Request Form");
             controller.setRecord(selectedRecord);
         }
+
+        if (selectedRecord instanceof JobRecord) {
+            RecruitmentRequestController controller = (RecruitmentRequestController) openRecordForm("../recruitment_request.fxml", "Recruitment Request Form");
+            controller.setRecord(selectedRecord);
+        }
+
         
         //EventFormController controller = (EventFormController) openRecordForm(actionEvent);
         //controller.setRecord(recordList.getSelectionModel().getSelectedItems().get(0));

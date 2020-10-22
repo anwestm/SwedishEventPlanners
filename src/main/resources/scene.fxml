@@ -40,10 +40,10 @@
                 <Label text="Record Type" GridPane.columnIndex="4" GridPane.halignment="LEFT" />
             </GridPane>
             <Label layoutX="987.0" layoutY="97.0" text="Record type" />
-            <Button layoutX="1000.0" layoutY="590.0" mnemonicParsing="false" onAction="#createEventRecordButton" prefHeight="25.0" prefWidth="180.0" text="EventRecord Request" />
-            <Button layoutX="1000.0" layoutY="623.0" mnemonicParsing="false" onAction="#financialRequestClicked" prefHeight="25.0" prefWidth="180.0" text="Financial Request" />
-            <Button layoutX="1000.0" layoutY="655.0" mnemonicParsing="false" onAction="#clientRequestDetailsClicked" prefHeight="25.0" prefWidth="180.0" text="Client Request Details" />
-            <Button layoutX="1000.0" layoutY="688.0" mnemonicParsing="false" onAction="#recruitmentRequestClicked" prefHeight="25.0" prefWidth="180.0" text="Create Job Advertisement" />
+            <Button fx:id="eventRecordButton" layoutX="1000.0" layoutY="590.0" mnemonicParsing="false" onAction="#createEventRecordButton" prefHeight="25.0" prefWidth="180.0" text="EventRecord Request" />
+            <Button fx:id="finReqButton" layoutX="1000.0" layoutY="623.0" mnemonicParsing="false" onAction="#financialRequestClicked" prefHeight="25.0" prefWidth="180.0" text="Financial Request" />
+            <Button fx:id="clientReqButton" layoutX="1000.0" layoutY="655.0" mnemonicParsing="false" onAction="#clientRequestDetailsClicked" prefHeight="25.0" prefWidth="180.0" text="Client Request Details" />
+            <Button fx:id="jobReqButton" layoutX="1000.0" layoutY="688.0" mnemonicParsing="false" onAction="#recruitmentRequestClicked" prefHeight="25.0" prefWidth="180.0" text="Create Job Request" />
         </AnchorPane>
     </Tab>
     <Tab text="Work Orders">

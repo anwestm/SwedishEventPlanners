@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import model.record.EventRecord;
 import model.record.FinancialRequestRecord;
+import model.record.JobRecord;
 import model.record.Record;
 
 import java.io.IOException;
@@ -63,6 +64,11 @@ public class RecordListItem extends ListCell<Record> {
             else if (item instanceof FinancialRequestRecord)
             {
                 typeLabel.setText("FinancialRequestRecord");
+            }
+            else if (item instanceof JobRecord)
+            {
+                typeLabel.setText("Job Advertisement Record");
+                nameLabel.setText(((JobRecord)item).title);
             }
             else
             {

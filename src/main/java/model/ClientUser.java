@@ -4,8 +4,18 @@ public class ClientUser {
 
     private static ClientUser current = null;
 
+    private EmployeeType type;
+
     private ClientUser() {
 
+    }
+
+    public void setEmployeeType(EmployeeType type) {
+        this.type = type;
+    }
+
+    public EmployeeType getEmployeeType() {
+        return type;
     }
 
 

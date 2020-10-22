@@ -3,6 +3,7 @@ package controller.serializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.record.EventRecord;
 import model.record.FinancialRequestRecord;
+import model.record.JobRecord;
 import model.record.Record;
 
 import java.io.File;
@@ -50,6 +51,8 @@ public class RecordLoader {
                     r  = mapper.readValue(f, EventRecord.class);
                 else if (filename.contains("FinancialRequestRecord"))
                     r  = mapper.readValue(f, FinancialRequestRecord.class);
+                else if (filename.contains("JobRecord"))
+                    r  = mapper.readValue(f, JobRecord.class);
 
                 recordList.add(r);
             } catch (IOException e) {

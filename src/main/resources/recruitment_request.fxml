@@ -4,29 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="484.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EventFormController">
-   <Label alignment="TOP_CENTER" layoutX="118.0" layoutY="34.0" prefHeight="17.0" prefWidth="167.0"
-          text="Recruitment Request" textFill="#ff1c1c" underline="true">
+<AnchorPane prefHeight="484.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecruitmentRequestController">
+   <Label alignment="TOP_CENTER" layoutX="118.0" layoutY="34.0" prefHeight="17.0" prefWidth="167.0" text="Recruitment Request" textFill="#ff1c1c" underline="true">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Label>
-   <Label layoutX="14.0" layoutY="69.0" prefHeight="17.0" prefWidth="87.0" text="Contract type:"/>
-   <RadioButton layoutX="118.0" layoutY="69.0" mnemonicParsing="false" text="Full time"/>
-   <RadioButton layoutX="201.0" layoutY="69.0" mnemonicParsing="false" text="Part time"/>
-   <Label layoutX="14.0" layoutY="101.0" prefHeight="17.0" prefWidth="135.0" text="Requesting department:"/>
-   <RadioButton layoutX="29.0" layoutY="127.0" mnemonicParsing="false" text="Administration"/>
-   <RadioButton layoutX="158.0" layoutY="127.0" mnemonicParsing="false" text="Services"/>
-   <RadioButton layoutX="29.0" layoutY="160.0" mnemonicParsing="false" text="Production"/>
-   <RadioButton layoutX="158.0" layoutY="160.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0"
-                text="Financial"/>
-   <Label layoutX="29.0" layoutY="210.0" prefHeight="17.0" prefWidth="109.0" text="Years of experience:"/>
-   <TextField layoutX="161.0" layoutY="206.0"/>
-   <Label layoutX="29.0" layoutY="254.0" text="Job title:"/>
-   <TextField layoutX="161.0" layoutY="250.0"/>
-   <Label layoutX="29.0" layoutY="298.0" prefHeight="17.0" prefWidth="87.0" text="Job description:"/>
-   <TextArea layoutX="158.0" layoutY="298.0" prefHeight="132.0" prefWidth="200.0"/>
-   <Button layoutX="263.0" layoutY="445.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0"
-           text="Send request"/>
+   <Label layoutX="14.0" layoutY="69.0" prefHeight="17.0" prefWidth="87.0" text="Contract type:" />
+   <RadioButton fx:id="fullTimeRadio" layoutX="118.0" layoutY="69.0" mnemonicParsing="false" text="Full time" />
+   <RadioButton fx:id="partTimeRadio" layoutX="201.0" layoutY="69.0" mnemonicParsing="false" text="Part time" />
+   <Label layoutX="14.0" layoutY="101.0" prefHeight="17.0" prefWidth="135.0" text="Requesting department:" />
+   <RadioButton fx:id="adminRadio" layoutX="29.0" layoutY="127.0" mnemonicParsing="false" text="Administration" />
+   <RadioButton fx:id="servicesRadio" layoutX="158.0" layoutY="127.0" mnemonicParsing="false" text="Services" />
+   <RadioButton fx:id="prodRadio" layoutX="29.0" layoutY="160.0" mnemonicParsing="false" text="Production" />
+   <RadioButton fx:id="financialRadio" layoutX="158.0" layoutY="160.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0" text="Financial" />
+   <Label layoutX="29.0" layoutY="210.0" prefHeight="17.0" prefWidth="109.0" text="Years of experience:" />
+   <TextField fx:id="yearsField" layoutX="161.0" layoutY="206.0" />
+   <Label layoutX="29.0" layoutY="254.0" text="Job title:" />
+   <TextField fx:id="titleField" layoutX="161.0" layoutY="250.0" />
+   <Label layoutX="29.0" layoutY="298.0" prefHeight="17.0" prefWidth="87.0" text="Job description:" />
+   <TextArea fx:id="descField" layoutX="158.0" layoutY="298.0" prefHeight="132.0" prefWidth="200.0" />
+   <Button fx:id="sendButton" layoutX="263.0" layoutY="445.0" mnemonicParsing="false" onAction="#onRecruitmentSend" prefHeight="25.0" prefWidth="99.0" text="Send request" />
 </AnchorPane>

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.ClientUser;
 import model.EmployeeType;
 
 import java.io.IOException;
@@ -28,7 +29,10 @@ public class LoginController {
         }
     }
 
-    private User[] users = new User[]{new User("FinMan1", "abc123", EmployeeType.FINANCIAL_MANAGER)};
+    private User[] users = new User[]{
+            new User("FinMan1", "abc123", EmployeeType.FINANCIAL_MANAGER),
+            new User("CustServ1", "abc123", EmployeeType.FINANCIAL_MANAGER)
+    };
 
 
     public PasswordField passwordField;
@@ -58,6 +62,7 @@ public class LoginController {
                 catch (IOException e) {
                     e.printStackTrace();
                 }
+                ClientUser.getInstance().setEmployeeType(u.type);
 
                 ((Stage)loginButton.getScene().getWindow()).close();
 

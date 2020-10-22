@@ -35,11 +35,13 @@ public class EventFormController {
 
     public Button saveButton;
 
+
     private EventRecord record;
 
     @FXML
     private void initialize() {
         record = new EventRecord();
+
     }
 
     public void setRecord(Record newRecord) {
@@ -95,7 +97,10 @@ public class EventFormController {
 
         System.out.println("Record Save");
 
-        WorkOrderRepository.getInstance().addWorkOrder(new WorkOrder(WorkOrder.WorkType.EVENT_DETAILS_REQUEST, EmployeeType.CUSTOMER_SERVICE, EmployeeType.SENIOR_CUSTOMER_SERVICE, recordNumber));
+        WorkOrder scsReq = new WorkOrder(WorkOrder.WorkType.EVENT_DETAILS_REQUEST, EmployeeType.CUSTOMER_SERVICE, EmployeeType.SENIOR_CUSTOMER_SERVICE, recordNumber);
+        scsReq.description = "Please get in contact with the client to get more details for the event.";
+
+        WorkOrderRepository.getInstance().addWorkOrder(scsReq);
 
         Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();

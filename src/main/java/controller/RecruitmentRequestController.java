@@ -5,95 +5,97 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.DepartmentType;
+import model.record.JobRecord;
 import model.record.util.EventPreferences;
 import model.record.EventRecord;
 import model.record.Record;
 
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Random;
 
 public class RecruitmentRequestController {
 
-    public TextField clientNameField;
-    public TextField recordNumberField;
-    public TextField eventTypeField;
 
-    public DatePicker startDatePicker;
-    public DatePicker endDatePicker;
+    public RadioButton fullTimeRadio;
+    public RadioButton partTimeRadio;
 
-    public Spinner<Integer> numAttendeesSpinner;
-    public Spinner<Integer> budgetSpinner;
+    public RadioButton adminRadio;
+    public RadioButton servicesRadio;
+    public RadioButton prodRadio;
+    public RadioButton financialRadio;
 
-    public CheckBox partiesBox;
-    public CheckBox foodBox;
-    public CheckBox drinksBox;
-    public CheckBox photosBox;
-    public CheckBox decorBox;
+    public TextField yearsField;
+    public TextField titleField;
+    public TextArea descField;
 
-    public Button saveButton;
+    public Button sendButton;
 
-    private EventRecord record;
+    private JobRecord record;
 
     @FXML
     private void initialize() {
-        record = new EventRecord();
+        record = new JobRecord();
+
+        final ToggleGroup contractGroup = new ToggleGroup();
+        fullTimeRadio.setToggleGroup(contractGroup);
+        partTimeRadio.setToggleGroup(contractGroup);
+
+        final ToggleGroup departmentGroup = new ToggleGroup();
+        adminRadio.setToggleGroup(departmentGroup);
+        servicesRadio.setToggleGroup(departmentGroup);
+        prodRadio.setToggleGroup(departmentGroup);
+        financialRadio.setToggleGroup(departmentGroup);
+
     }
 
     public void setRecord(Record newRecord) {
-        this.record = (EventRecord) newRecord;
+        this.record = (JobRecord) newRecord;
 
-        clientNameField.setText(record.name);
-        recordNumberField.setText(Integer.toString(record.id));
-        eventTypeField.setText(record.eventType);
+        if (record.fullTimeContract)
+            fullTimeRadio.setSelected(true);
+        else
+            partTimeRadio.setSelected(true);
 
-        startDatePicker.setValue(record.startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        endDatePicker.setValue(record.endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-
-        numAttendeesSpinner.getValueFactory().setValue(record.numParticipants);
-        budgetSpinner.getValueFactory().setValue(record.budget);
-
-        partiesBox.setSelected(record.prefs.parties);
-        foodBox.setSelected(record.prefs.food);
-        drinksBox.setSelected(record.prefs.drinks);
-        photosBox.setSelected(record.prefs.photos);
-        decorBox.setSelected(record.prefs.decorations);
+        switch (record.departmentType) {
+            case ADMINISTRATION -> adminRadio.setSelected(true);
+            case FINANCIAL -> financialRadio.setSelected(true);
+            case PRODUCTION -> prodRadio.setSelected(true);
+            case SERVICES -> servicesRadio.setSelected(true);
+        }
+        yearsField.setText(Integer.toString(record.years));
+        titleField.setText(record.title);
+        descField.setText(record.desc);
     }
 
-    public void saveButtonPressed(ActionEvent actionEvent) {
 
-        String clientName = clientNameField.getText();
-        Integer recordNumber = Integer.valueOf(recordNumberField.getText());
-        String eventType = eventTypeField.getText();
+    public void onRecruitmentSend(ActionEvent event) {
 
-        Date startDate = Date.from(startDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Date endDate = Date.from(endDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        record = new JobRecord();
+        record.id = new Random().nextInt(100000);
 
-        int numAttendees = numAttendeesSpinner.getValue();
-        int budget = budgetSpinner.getValue();
+        record.fullTimeContract = fullTimeRadio.isSelected();
 
-        EventPreferences prefs = new EventPreferences(
-                decorBox.isSelected(),
-                partiesBox.isSelected(),
-                photosBox.isSelected(),
-                foodBox.isSelected(),
-                drinksBox.isSelected()
-        );
+        if(adminRadio.isSelected())
+            record.departmentType = DepartmentType.ADMINISTRATION;
+        else if (financialRadio.isSelected())
+            record.departmentType = DepartmentType.FINANCIAL;
+        else if (prodRadio.isSelected())
+            record.departmentType = DepartmentType.PRODUCTION;
+        else if (servicesRadio.isSelected())
+            record.departmentType = DepartmentType.SERVICES;
 
-        record = new EventRecord(clientName+""+recordNumber, new Date(), recordNumber, "Me");
-        record.eventType = eventType;
-        record.startDate = startDate;
-        record.endDate = endDate;
-        record.budget = budget;
-        record.numParticipants = numAttendees;
-        record.prefs = prefs;
+        record.years = Integer.parseInt(yearsField.getText());
+        record.title = titleField.getText();
+        record.desc = descField.getText();
 
         RecordLoader loader = new RecordLoader("records");
-        loader.saveRecord(record, EventRecord.class);
+        loader.saveRecord(record, JobRecord.class);
 
         System.out.println("Record Save");
 
-        Stage stage = (Stage) saveButton.getScene().getWindow();
+        Stage stage = (Stage) sendButton.getScene().getWindow();
         stage.close();
-
     }
 }
