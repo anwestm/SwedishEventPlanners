@@ -10,6 +10,7 @@ import model.record.FinancialRequestRecord;
 import model.record.Record;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class RecordListItem extends ListCell<Record> {
 
@@ -51,7 +52,7 @@ public class RecordListItem extends ListCell<Record> {
         }
         else {
             nameLabel.setText(item.name);
-            dateLabel.setText(item.creationDate.toString());
+            dateLabel.setText(new SimpleDateFormat("yyyy-MM-dd").format(item.creationDate));
             idLabel.setText(Integer.toString(item.id));
             creatorLabel.setText(item.creator);
 

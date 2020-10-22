@@ -1,11 +1,23 @@
 package model;
 
 public enum EmployeeType {
-    HR_EMPLOYEE,
-    CUSTOMER_SERVICE,
-    SENIOR_CUSTOMER_SERVICE,
-    FINANCIAL_MANAGER,
-    ADMINISTRATION_MANAGER,
-    PRODUCTION_MANAGER,
-    SERVICE_MANAGER
+
+    HR_EMPLOYEE("HR-Employee"),
+    CUSTOMER_SERVICE("Customer Service"),
+    SENIOR_CUSTOMER_SERVICE("Senior Customer Service"),
+    FINANCIAL_MANAGER("Financial Manager"),
+    ADMINISTRATION_MANAGER("Administration Manager"),
+    PRODUCTION_MANAGER("Production Manager"),
+    SERVICE_MANAGER("Service Manager");
+
+    private String name;
+
+    EmployeeType(String str) {
+        this.name = str;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

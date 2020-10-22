@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.DepartmentType;
-import model.record.EventRecord;
 import model.record.FinancialRequestRecord;
 import model.record.Record;
 
@@ -22,7 +21,7 @@ public class FinancialRequestController {
 
     public TextField projReferenceField;
     public TextField budgetField;
-    public TextArea reason;
+    public TextArea reasonField;
 
     public Button saveButton;
 
@@ -54,7 +53,7 @@ public class FinancialRequestController {
 
         projReferenceField.setText(Integer.toString(record.id));
         budgetField.setText(Integer.toString(record.budget));
-        reason.setText(record.budgetReason);
+        reasonField.setText(record.budgetReason);
     }
 
     public void saveButtonPressed(ActionEvent actionEvent) {
@@ -73,7 +72,7 @@ public class FinancialRequestController {
         int recordNumber = Integer.parseInt(projReferenceField.getText());
         int budget = Integer.parseInt(budgetField.getText());
 
-        String reasonStr = reason.getText();
+        String reasonStr = reasonField.getText();
         record = new FinancialRequestRecord(Integer.toString(recordNumber), new Date(), recordNumber, "finPanel");
         record.budget = budget;
         record.budgetReason = reasonStr;

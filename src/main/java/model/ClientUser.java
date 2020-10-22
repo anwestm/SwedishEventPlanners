@@ -8,6 +8,7 @@ public class ClientUser {
 
     }
 
+
     public static ClientUser getInstance() {
         if (current == null)
             current = new ClientUser();

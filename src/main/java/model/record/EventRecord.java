@@ -14,6 +14,15 @@ public class EventRecord extends Record {
     public int numParticipants;
     public EventPreferences prefs;
 
+    public String description;
+    public String decorations;
+    public String foodAndDrinks;
+    public String filmingAndPhotos;
+    public String music;
+    public String postersAndArt;
+    public String computerIssues;
+    public String otherNeeds;
+
     public EventRecord() {
         super("", new Date(), 0, "json");
 

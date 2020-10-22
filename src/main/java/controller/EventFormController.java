@@ -5,9 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.EmployeeType;
 import model.record.util.EventPreferences;
 import model.record.EventRecord;
 import model.record.Record;
+import model.workorder.WorkOrder;
+import model.workorder.WorkOrderRepository;
 
 import java.time.ZoneId;
 import java.util.Date;
@@ -62,7 +65,7 @@ public class EventFormController {
     public void saveButtonPressed(ActionEvent actionEvent) {
 
         String clientName = clientNameField.getText();
-        Integer recordNumber = Integer.valueOf(recordNumberField.getText());
+        int recordNumber = Integer.parseInt(recordNumberField.getText());
         String eventType = eventTypeField.getText();
 
         Date startDate = Date.from(startDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -91,6 +94,8 @@ public class EventFormController {
         loader.saveRecord(record, EventRecord.class);
 
         System.out.println("Record Save");
+
+        WorkOrderRepository.getInstance().addWorkOrder(new WorkOrder(WorkOrder.WorkType.EVENT_DETAILS_REQUEST, EmployeeType.CUSTOMER_SERVICE, EmployeeType.SENIOR_CUSTOMER_SERVICE, recordNumber));
 
         Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();

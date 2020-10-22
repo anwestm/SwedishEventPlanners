@@ -8,19 +8,19 @@
     <Tab text="Records">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="790.0">
             <ListView id="recordList" fx:id="recordList" layoutX="29.0" layoutY="43.0" prefHeight="689.0" prefWidth="931.0" />
-            <TextField layoutX="987.0" layoutY="43.0" promptText="Search..." />
+            <TextField fx:id="searchField" layoutX="987.0" layoutY="43.0" promptText="Search..." />
             <Button layoutX="1133.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
             <Button layoutX="987.0" layoutY="150.0" mnemonicParsing="false" onAction="#openRecordButton" prefHeight="25.0" prefWidth="200.0" text="Open Selected Record" />
             <Button layoutX="987.0" layoutY="180.0" mnemonicParsing="false" onAction="#deleteRecordButton" prefHeight="25.0" prefWidth="200.0" text="Delete Selected Record" />
             <Button layoutX="987.0" layoutY="220.0" mnemonicParsing="false" onAction="#updateRecordList" prefHeight="25.0" prefWidth="200.0" text="UpdateRecord List" />
-            <ChoiceBox layoutX="987.0" layoutY="114.0" prefHeight="25.0" prefWidth="200.0" />
+            <ChoiceBox fx:id="recordTypeChoiceBox" layoutX="987.0" layoutY="114.0" onAction="#onRecordTypeChoiceChanged" prefHeight="25.0" prefWidth="200.0" />
             <GridPane alignment="CENTER" layoutX="29.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
                 <columnConstraints>
                     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
                     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
                     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
                     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
-               <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
                 </columnConstraints>
                 <rowConstraints>
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -37,24 +37,45 @@
                         <Insets left="20.0" />
                     </padding>
                 </Label>
-            <Label text="Record Type" GridPane.columnIndex="4" GridPane.halignment="LEFT" />
+                <Label text="Record Type" GridPane.columnIndex="4" GridPane.halignment="LEFT" />
             </GridPane>
             <Label layoutX="987.0" layoutY="97.0" text="Record type" />
             <Button layoutX="1000.0" layoutY="590.0" mnemonicParsing="false" onAction="#createEventRecordButton" prefHeight="25.0" prefWidth="180.0" text="EventRecord Request" />
             <Button layoutX="1000.0" layoutY="623.0" mnemonicParsing="false" onAction="#financialRequestClicked" prefHeight="25.0" prefWidth="180.0" text="Financial Request" />
-         <Button layoutX="1000.0" layoutY="655.0" mnemonicParsing="false" onAction="#clientRequestDetailsClicked" prefHeight="25.0" prefWidth="180.0" text="Client Request Details" />
-         <Button layoutX="1000.0" layoutY="688.0" mnemonicParsing="false" onAction="#recruitmentRequestClicked" prefHeight="25.0" prefWidth="180.0" text="Recruitment Request" />
-         <Button layoutX="1000.0" layoutY="720.0" mnemonicParsing="false" onAction="#createClientRecordClicked" prefHeight="25.0" prefWidth="180.0" text="CreateClientRecord" />
+            <Button layoutX="1000.0" layoutY="655.0" mnemonicParsing="false" onAction="#clientRequestDetailsClicked" prefHeight="25.0" prefWidth="180.0" text="Client Request Details" />
+            <Button layoutX="1000.0" layoutY="688.0" mnemonicParsing="false" onAction="#recruitmentRequestClicked" prefHeight="25.0" prefWidth="180.0" text="Create Job Advertisement" />
         </AnchorPane>
     </Tab>
     <Tab text="Work Orders">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-         <children>
-            <ScrollPane layoutX="38.0" layoutY="50.0" prefHeight="666.0" prefWidth="981.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="203.0" />
-              </content>
-            </ScrollPane>
-         </children></AnchorPane>
+            <ListView id="recordList" fx:id="workOrderList" layoutX="29.0" layoutY="43.0" prefHeight="667.0" prefWidth="1146.0" />
+            <GridPane alignment="CENTER" layoutX="29.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="1149.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+                <columnConstraints>
+                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <Label fx:id="wnameLabel" text="Name" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="wdateLabel" text="Assigned to" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                <Label fx:id="widLabel" text="Record ID" GridPane.columnIndex="3" GridPane.halignment="LEFT" />
+                <Label fx:id="wcreatorLabel" text="Created by" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Label>
+                <Label text="Status" GridPane.columnIndex="4" GridPane.halignment="LEFT" />
+            </GridPane>
+         <Button layoutX="936.0" layoutY="718.0" mnemonicParsing="false" onAction="#onCreateWorkOrder" text="Create Work Order" />
+         <Button layoutX="1064.0" layoutY="718.0" mnemonicParsing="false" onAction="#onOpenWorkOrder" text="Open Work Order" />
+        </AnchorPane>
     </Tab>
 </TabPane>
