@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.control.ListView;
 import model.ClientUser;
+import model.EmployeeType;
 import view.WorkOrderListItem;
 
 import java.io.File;
@@ -14,6 +15,7 @@ import java.util.List;
 public class WorkOrderRepository {
 
     private static WorkOrderRepository current = null;
+    private static String path = "work_order";
 
     private List<WorkOrder> workOrderList;
     private ListView<WorkOrder> listView = null;
@@ -22,10 +24,12 @@ public class WorkOrderRepository {
     private final File file;
 
 
+
+
     private WorkOrderRepository() {
         mapper = new ObjectMapper();
 
-        file = new File("work_order/work_orders.json");
+        file = new File(path + "/work_orders.json");
         if (file.exists())
         {
             try {
@@ -51,8 +55,21 @@ public class WorkOrderRepository {
     private void updateList() {
         if (listView != null) {
             listView.getItems().clear();
-            listView.getItems().addAll(workOrderList);
+            if (ClientUser.getInstance().getEmployeeType() == EmployeeType.DEBUG)
+                listView.getItems().addAll(workOrderList);
+            else {
+                for (WorkOrder o : workOrderList) {
+                    if (o.worker == ClientUser.getInstance().getEmployeeType() || o.initiator == ClientUser.getInstance().getEmployeeType()) {
+                        listView.getItems().add(o);
+                    }
+                }
+            }
         }
+    }
+
+    public static void setPath(String path) {
+        WorkOrderRepository.path = path;
+        current = new WorkOrderRepository();
     }
 
     public void addWorkOrder(WorkOrder order) {
@@ -66,6 +83,10 @@ public class WorkOrderRepository {
 
         updateList();
         System.out.println("Create Work Order");
+    }
+
+    public List<WorkOrder> getWorkOrderList() {
+        return workOrderList;
     }
 
     public void addListViewSubscription(ListView<WorkOrder> view) {

@@ -9,6 +9,8 @@ public enum EmployeeType {
     ADMINISTRATION_MANAGER("Administration Manager"),
     PRODUCTION_MANAGER("Production Manager"),
     SERVICE_MANAGER("Service Manager"),
+    CHEF("Chef"),
+    PHOTOGRAPHER("Photographer"),
     DEBUG("DEBUG");
 
     private String name;

@@ -6,10 +6,17 @@ import model.EmployeeType;
 public class WorkOrder {
 
     public enum WorkType {
-        EVENT_DETAILS_REQUEST("Request Client Details"),
-        FINANCIAL_REQUEST("Financial Request"),
+        REVIEW_EVENT_REQUEST("Review Event Request"),
+        REVIEW_EVENT_FINANCES("Review Event Finances"),
+        APPROVE_EVENT("Approve Event"),
+        REQUEST_CLIENT_DETAILS("Get Event Details"),
+
+        REQUEST_CHEF_WORK("Event Chef Work"),
+        REQUEST_PHOTO_WORK("Event photography Work"),
+
         HIRING_REQUEST("Hiring Request"),
-        PRODUCTION_REQUEST("Production Request");
+
+        FINANCIAL_REQUEST("Financial Request");
 
 
         private final String name;

@@ -10,7 +10,7 @@
             <ListView id="recordList" fx:id="recordList" layoutX="29.0" layoutY="43.0" prefHeight="689.0" prefWidth="931.0" />
             <TextField fx:id="searchField" layoutX="987.0" layoutY="43.0" promptText="Search..." />
             <Button layoutX="1133.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
-            <Button layoutX="987.0" layoutY="150.0" mnemonicParsing="false" onAction="#openRecordButton" prefHeight="25.0" prefWidth="200.0" text="Open Selected Record" />
+            <Button fx:id="openButton" layoutX="987.0" layoutY="150.0" mnemonicParsing="false" onAction="#openRecordButton" prefHeight="25.0" prefWidth="200.0" text="Open Selected Record" />
             <Button layoutX="987.0" layoutY="180.0" mnemonicParsing="false" onAction="#deleteRecordButton" prefHeight="25.0" prefWidth="200.0" text="Delete Selected Record" />
             <Button layoutX="987.0" layoutY="220.0" mnemonicParsing="false" onAction="#updateRecordList" prefHeight="25.0" prefWidth="200.0" text="UpdateRecord List" />
             <ChoiceBox fx:id="recordTypeChoiceBox" layoutX="987.0" layoutY="114.0" onAction="#onRecordTypeChoiceChanged" prefHeight="25.0" prefWidth="200.0" />

@@ -29,9 +29,21 @@ public class LoginController {
         }
     }
 
-    private User[] users = new User[]{
+    private final User[] users = new User[]{
+
+            new User("CustServ1", "abc123", EmployeeType.CUSTOMER_SERVICE),
+            new User("SenCustServ1", "abc123", EmployeeType.SENIOR_CUSTOMER_SERVICE),
             new User("FinMan1", "abc123", EmployeeType.FINANCIAL_MANAGER),
-            new User("CustServ1", "abc123", EmployeeType.FINANCIAL_MANAGER)
+            new User("AdmMan1", "abc123", EmployeeType.ADMINISTRATION_MANAGER),
+
+            new User("ServMan1", "abc123", EmployeeType.SERVICE_MANAGER),
+            new User("ProdMan1", "abc123", EmployeeType.PRODUCTION_MANAGER),
+
+            new User("chef1", "abc123", EmployeeType.CHEF),
+            new User("photo1", "abc123", EmployeeType.PHOTOGRAPHER),
+
+            new User("HR1", "abc123", EmployeeType.HR_EMPLOYEE),
+
     };
 
 
@@ -43,34 +55,42 @@ public class LoginController {
         String enteredPassword = passwordField.getText();
         String enteredUsername = usernameField.getText();
 
+        User succes_user = null;
         for (User u : users) {
             if (enteredUsername.contentEquals(u.username) && enteredPassword.contentEquals(u.password)) {
-                System.out.println("Login Succesfully");
-
-                Parent root;
-                FXMLLoader loader = null;
-                try{
-                    loader = new FXMLLoader(getClass().getResource("../scene.fxml"));
-                    root = loader.load();
-                    Stage stage = new Stage();
-                    stage.setTitle("Swedish Event Planners");
-                    stage.setScene(new Scene(root));
-                    stage.setResizable(false);
-                    stage.setAlwaysOnTop(true);
-                    stage.show();
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-                ClientUser.getInstance().setEmployeeType(u.type);
-
-                ((Stage)loginButton.getScene().getWindow()).close();
-
-            } else {
-                Alert alert =  new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Invalid Password");
-                alert.showAndWait();
+                succes_user = u;
             }
+        }
+
+        if (succes_user != null) {
+            System.out.println("Login Succesfully");
+
+            ClientUser.getInstance().setEmployeeType(succes_user.type);
+
+            Parent root;
+            FXMLLoader loader = null;
+            try{
+                loader = new FXMLLoader(getClass().getResource("../scene.fxml"));
+                root = loader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Swedish Event Planners");
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.setAlwaysOnTop(true);
+                stage.setAlwaysOnTop(false);
+                stage.show();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            ((Stage)loginButton.getScene().getWindow()).close();
+
+        } else {
+            Alert alert =  new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid Password");
+            alert.setContentText("Please contact system administrator (phone: 08-580 321 12 12) to reset your password");
+            alert.showAndWait();
         }
 
     }

@@ -1,6 +1,7 @@
 package controller;
 
 import controller.serializer.RecordLoader;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +40,7 @@ public class RecordTabController {
     public Button finReqButton;
     public Button clientReqButton;
     public Button jobReqButton;
+    public Button openButton;
 
     @FXML
     private void initialize() {
@@ -65,24 +67,28 @@ public class RecordTabController {
 
         EmployeeType currentUser = ClientUser.getInstance().getEmployeeType();
 
+        if (currentUser != EmployeeType.DEBUG) {
+            eventRecordButton.setDisable(true);
+            finReqButton.setDisable(true);
+            clientReqButton.setDisable(true);
+            jobReqButton.setDisable(true);
+        }
 
-        /*eventRecordButton.setDisable(true);
-        finReqButton.setDisable(true);
-        clientReqButton.setDisable(true);
-        jobReqButton.setDisable(true);*/
-
+        System.out.println("CURRENT USER:" + currentUser);
         if(currentUser == EmployeeType.CUSTOMER_SERVICE)
             eventRecordButton.setDisable(false);
 
         if (currentUser == EmployeeType.SENIOR_CUSTOMER_SERVICE)
             clientReqButton.setDisable(false);
 
-        if (currentUser == EmployeeType.SENIOR_CUSTOMER_SERVICE || currentUser == EmployeeType.PRODUCTION_MANAGER)
+        if (currentUser == EmployeeType.SENIOR_CUSTOMER_SERVICE || currentUser == EmployeeType.PRODUCTION_MANAGER || currentUser == EmployeeType.SERVICE_MANAGER)
             finReqButton.setDisable(false);
 
-        if (currentUser == EmployeeType.HR_EMPLOYEE || currentUser == EmployeeType.PRODUCTION_MANAGER)
+        if (currentUser == EmployeeType.HR_EMPLOYEE || currentUser == EmployeeType.PRODUCTION_MANAGER || currentUser == EmployeeType.SERVICE_MANAGER)
             jobReqButton.setDisable(false);
 
+
+        openButton.disableProperty().bind(Bindings.size(recordList.getSelectionModel().getSelectedItems()).lessThan(1));
     }
 
 
@@ -99,6 +105,7 @@ public class RecordTabController {
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.setAlwaysOnTop(true);
+            stage.setAlwaysOnTop(false);
             stage.show();
         }
         catch (IOException e) {
@@ -131,8 +138,6 @@ public class RecordTabController {
             alert.setHeaderText("An existing event-record must selected");
             alert.showAndWait();
         }
-
-
 
     }
 
@@ -185,7 +190,7 @@ public class RecordTabController {
 
         outer : for (Record r1 : recordLoader.getAvailableRecords()) {
 
-            System.out.println("Class name: " + r1.getClass().getSimpleName());
+            //System.out.println("Class name: " + r1.getClass().getSimpleName());
             if (!recordTypeChoiceBox.getValue().equals("All Records")) {
                 if (!recordTypeChoiceBox.getValue().equals(r1.getClass().getSimpleName()))
                     continue;
@@ -206,6 +211,11 @@ public class RecordTabController {
             if (Integer.toString(r.id).startsWith(searchField.getText()))
                 continue;
             recordList.getItems().remove(i--); // item removal will shift list to the left (after the index)
+        }
+        if (recordList.getItems().size() == 0) {
+            Alert alert =  new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("No record found!");
+            alert.showAndWait();
         }
     }
 

@@ -41,7 +41,7 @@ public class RecordLoader {
 
         File recordDirectory = new File(path);
         for (File f : Objects.requireNonNull(recordDirectory.listFiles())) {
-            System.out.println(f.getName());
+            //System.out.println(f.getName());
             try {
 
                 String filename = f.getName();
@@ -60,7 +60,7 @@ public class RecordLoader {
             }
         }
 
-        System.out.println(recordList);
+        //System.out.println(recordList);
 
         return recordList;
     }

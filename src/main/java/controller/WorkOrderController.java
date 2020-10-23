@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.ClientUser;
 import model.EmployeeType;
 import model.workorder.WorkOrder;
 import model.workorder.WorkOrderRepository;
@@ -27,6 +28,7 @@ public class WorkOrderController {
         workerOrderTypeBox.getItems().addAll(WorkOrder.WorkType.values());
         initiatorBox.getItems().addAll(EmployeeType.values());
         assigneeBox.getItems().addAll(EmployeeType.values());
+        initiatorBox.setValue(ClientUser.getInstance().getEmployeeType());
     }
 
     public void setRecord(WorkOrder workOrder) {

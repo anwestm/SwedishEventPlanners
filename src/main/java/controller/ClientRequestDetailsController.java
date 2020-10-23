@@ -3,13 +3,12 @@ package controller;
 import controller.serializer.RecordLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.EmployeeType;
 import model.record.EventRecord;
 import model.record.Record;
+import model.workorder.WorkOrder;
 import model.workorder.WorkOrderRepository;
 
 import java.time.ZoneId;
@@ -68,33 +67,38 @@ public class ClientRequestDetailsController {
     }
 
     public void onSaveButtonClicked(ActionEvent event) {
+        try {
 
-        record.id = Integer.parseInt(clientRecordIdField.getText());
-        record.name = clientNameField.getText();
-        record.eventType = eventTypeField.getText();
-        record.description = descriptionField.getText();
+            record.id = Integer.parseInt(clientRecordIdField.getText());
+            record.name = clientNameField.getText();
+            record.eventType = eventTypeField.getText();
+            record.description = descriptionField.getText();
 
-        record.numParticipants = Integer.parseInt(attendeesField.getText());
-        record.budget = Integer.parseInt(budgetField.getText());
+            record.numParticipants = Integer.parseInt(attendeesField.getText());
+            record.budget = Integer.parseInt(budgetField.getText());
 
-        record.startDate = Date.from(startDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        record.endDate = Date.from(endDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            record.startDate = Date.from(startDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            record.endDate = Date.from(endDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        record.decorations = decorationsArea.getText();
-        record.foodAndDrinks = foodArea.getText();
-        record.filmingAndPhotos = filmingArea.getText();
-        record.music = musicArea.getText();
-        record.postersAndArt = artArea.getText();
-        record.computerIssues = computerArea.getText();
-        record.otherNeeds = otherArea.getText();
+            record.decorations = decorationsArea.getText();
+            record.foodAndDrinks = foodArea.getText();
+            record.filmingAndPhotos = filmingArea.getText();
+            record.music = musicArea.getText();
+            record.postersAndArt = artArea.getText();
+            record.computerIssues = computerArea.getText();
+            record.otherNeeds = otherArea.getText();
 
-        RecordLoader loader = new RecordLoader("records");
-        loader.saveRecord(record, EventRecord.class);
+            RecordLoader loader = new RecordLoader("records");
+            loader.saveRecord(record, EventRecord.class);
 
-        //WorkOrderRepository.getInstance().addWorkOrder(new Wo);
 
-        Stage stage = (Stage) saveButton.getScene().getWindow();
-        stage.close();
+            Stage stage = (Stage) saveButton.getScene().getWindow();
+            stage.close();
+        } catch (Exception e) {
+            Alert alert =  new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid Input");
+            alert.showAndWait();
+        }
 
     }
 }
